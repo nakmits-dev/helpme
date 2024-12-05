@@ -8,6 +8,7 @@ import Thread from './pages/Thread';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import EmailVerification from './pages/EmailVerification';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<Layout />}>
+            {/* 認証関連のルート */}
             <Route path="/login" element={<Login />} />
             <Route path="/verify-email" element={<EmailVerification />} />
+            
+            {/* 保護されたルート */}
             <Route index element={
               <ProtectedRoute>
                 <Home />
@@ -32,6 +36,7 @@ function App() {
                 <Profile />
               </ProtectedRoute>
             } />
+
             {/* 不明なURLはすべてホームページにリダイレクト */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

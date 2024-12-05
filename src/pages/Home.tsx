@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { createThread, getThreads } from '../services/firebase/threads';
 import { getComments, createComment } from '../services/firebase/comments';
@@ -10,10 +9,11 @@ import ThreadCard from '../components/thread/ThreadCard';
 import CreateThreadModal from '../components/thread/CreateThreadModal';
 import SubThreadModal from '../components/thread/SubThreadModal';
 import { useLoading } from '../hooks/useLoading';
+import { useAppNavigation } from '../hooks/useNavigation';
 
 export default function Home() {
-  const navigate = useNavigate();
   const { user } = useAuth();
+  const { goToThread } = useAppNavigation();
   const [threads, setThreads] = useState<Thread[]>([]);
   const { loading, shouldShow, withLoading } = useLoading({ delay: 300 });
   const [error, setError] = useState<string | null>(null);
@@ -93,7 +93,7 @@ export default function Home() {
     if (thread.parentId) {
       setSelectedThread(thread);
     } else {
-      navigate(`/thread/${thread.id}`);
+      goToThread(thread.id);
     }
   };
 
