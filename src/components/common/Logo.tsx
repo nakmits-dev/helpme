@@ -21,7 +21,7 @@ export default function Logo({ size = 'md', className = '' }: LogoProps) {
 
   return (
     <div className={`flex items-center space-x-3 ${className}`}>
-      <div className="flex items-center bg-gradient-to-r from-primary-500 to-secondary-500 p-2 rounded-lg text-white animate-float">
+      <div className="flex items-center bg-gradient-to-r from-primary-500 to-secondary-500 p-2 rounded-lg text-white">
         <HelpCircle className={sizes[size]} />
       </div>
       <h1 className={`${textSizes[size]} font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent`}>
