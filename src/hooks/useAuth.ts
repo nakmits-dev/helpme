@@ -59,7 +59,7 @@ export function useAuth() {
     return () => unsubscribe();
   }, []);
 
-  const signOut = async () => {
+  const signOutUser = async () => {
     try {
       await firebaseSignOut();
       setUser(null);
@@ -73,7 +73,7 @@ export function useAuth() {
     loading,
     signIn,
     signUp,
-    signOut,
+    signOut: signOutUser,
     signInAnon,
     verifyEmail,
     isAuthenticated: !!user,
