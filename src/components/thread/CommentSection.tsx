@@ -83,7 +83,7 @@ export default function CommentSection({
                         {format(comment.createdAt.toDate(), 'yyyy年MM月dd日 HH:mm', { locale: ja })}
                       </time>
                     </div>
-                    <p 
+                    <div 
                       className="text-gray-900 whitespace-pre-wrap break-words"
                       dangerouslySetInnerHTML={{ 
                         __html: replaceUrlsWithLinks(comment.content) 
